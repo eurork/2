@@ -1,5 +1,6 @@
 node {
     stage('Install') {
+        sh 'cd ..'
         sh 'echo "rozpoczynam instalacje . . ."'
         sh 'sleep 1'
         sh 'bash ./plik.sh'
