@@ -6,7 +6,7 @@ pipeline {
                 echo "rozpoczynam instalacje . . ."
                 sleep 1
                 bash ./plik.sh
-                sleep 2
+                sleep 1
                 ls -al
                 echo "Instalacja zakończona prawidłowo."
             }
