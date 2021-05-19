@@ -8,7 +8,7 @@ pipeline {
                 bash ./plik.sh
                 sleep 1
                 ls -al
-                echo "Instalacja zakończona prawidłowo."
+                echo "Instalacja zakonczona prawidlowo."
             }
         }
     }
