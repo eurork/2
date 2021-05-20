@@ -1,27 +1,20 @@
-node {
-    stage('Install') {
-        sh 'cd ..'
-        sh 'echo "rozpoczynam instalacje . . ."'
-        sh 'sleep 1'
-        sh 'bash ./plik.sh'
-        sh 'sleep 1'
-        sh 'ls -al'
-        sh 'echo "Instalacja zakonczona prawidlowo."'
+pipeline {
+    agent any;
+    options {
+        copyArtifactPermission('deploy');
+    }
+    stages{
+      stage('install') {
+        steps {
+          sh 'echo "rozpoczynam instalacje . . ."'
+          sh 'sleep 1'
+          copyArtifacts filter: 'test.zip', fingerprintArtifacts: true, projectName: 'build'
+          unzip zipFile: 'test.zip', dir: './archive_new'
+          sh 'cd archive_new'
+          sh 'bash ./plik.sh'
+          sh 'ls -al'
+          sh 'echo "Instalacja zakonczona prawidlowo."'
+        }
+      }
     }
 }
-
-// pipeline {
-//     agent any
-//     stages {
-//         stage('Install') {
-//             steps {
-//                 echo "rozpoczynam instalacje . . ."
-//                 sleep 1
-//                 bash ./plik.sh
-//                 sleep 1
-//                 ls -al
-//                 echo "Instalacja zakonczona prawidlowo."
-//             }
-//         }
-//     }
-// }
