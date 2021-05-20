@@ -9,7 +9,9 @@ pipeline {
           sh 'echo "rozpoczynam instalacje . . ."'
           sh 'sleep 1'
           copyArtifacts filter: 'test.zip', fingerprintArtifacts: true, projectName: 'build'
-          unzip zipFile: 'test.zip', dir: './archive_new'
+          script{
+            unzip zipFile: 'test.zip', dir: './archive_new'
+          }
           sh 'cd archive_new'
           sh 'bash ./plik.sh'
           sh 'ls -al'
