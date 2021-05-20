@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-      VERSION = '1.0'
+      VERSION = '1.1'
     }
     stages{
       stage('install') {
